@@ -33,7 +33,7 @@ class UserSeeder {
     query.save()
 
     console.log(data)
-    process.exit()
+    // process.exit()
 
   }
 }
