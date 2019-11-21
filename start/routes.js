@@ -19,3 +19,10 @@ const Route = use('Route')
 Route.on('/').render('welcome')
 
 Route.get('login', 'AuthController.login')
+
+Route.group(() => {
+    Route.post('login', 'Api/JwtController.login').as('api.login')
+    Route.get('me', 'Api/JwtController.me').as('api.me').middleware(['auth:jwt'])
+    Route.post('refresh', 'Api/JwtController.refresh').as('api.refresh').middleware(['auth:jwt'])
+    Route.post('logout', 'Api/JwtController.logout').as('api.logout').middleware(['auth:jwt'])
+}).prefix('api/v1')
