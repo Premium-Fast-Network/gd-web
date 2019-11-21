@@ -1,20 +1,65 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <title>Hello Adonis</title>
-  {{ style('style') }}
-</head>
-<body>
-  <section>
-    <div class="logo"></div>
-    <div class="title"></div>
-    <div class="subtitle">
-      <p>AdonisJs simplicity will make you feel confident about your code</p>
-      <p>
-        Don't know where to start? Read the <a href="https://adonisjs.com/docs">documentation</a>.
-      </p>
-    </div>
-  </section>
-</body>
-</html>
+@layout('layouts.app')
+
+@section('body')
+  <div class="container">
+      <div class="section">
+          <div class="center-align">
+              {{-- <h2 class="animated bounce">Connect to Google Drive</h2> --}}
+              <h2 class="red-text text-darken-3">
+                  <span id="animate"></span>
+              </h2>
+              <a class="waves-effect waves-light btn">
+                  <i class="material-icons left">cloud</i> Login
+              </a>
+          </div>
+      </div>
+  </div>
+
+  <div class="container">
+      <div class="section">
+          <div class="row">
+              <div class="col s12 m4">
+                  <div class="icon-block center">
+                      <h2 class="red-text text-darken-3">
+                          <i class="fab fa-google-drive"></i>
+                      </h2>
+                      <h5>Mirror to Google Drive</h5>
+                  </div>
+              </div>
+              <div class="col s12 m4">
+                  <div class="icon-block center">
+                      <h2 class="red-text text-darken-3">
+                          <i class="fas fa-envelope-open-text"></i>
+                      </h2>
+                      <h5>Email Link Notification</h5>
+                  </div>
+              </div>
+              <div class="col s12 m4">
+                  <div class="icon-block center">
+                      <h2 class="red-text text-darken-3">
+                          <i class="fas fa-cloud-download-alt"></i>
+                      </h2>
+                      <h5>Enjoy You're Files</h5>
+                  </div>
+              </div>
+          </div>
+      </div>
+  </div>
+@endsection
+
+@section('js')
+  <script>
+      $(document).ready(function() {
+          var typed = new Typed('#animate', {
+              strings: [
+                  "Connect to Google Drive",
+                  "Mirror a Files",
+                  "Enjoy With Our Services"
+              ],
+              startDelay: 90,
+              typeSpeed: 90,
+              loop: true
+          });
+      })
+  </script>
+@endsection
