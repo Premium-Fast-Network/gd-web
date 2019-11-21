@@ -12,18 +12,29 @@
 
 /** @type {import('@adonisjs/lucid/src/Factory')} */
 const Factory = use('Factory')
-const Database = use('Database')
-const Hash = use('Hash')
+const User = use('App/Models/User')
+const { uuid, str_random } = use('App/Helpers')
 
 class UserSeeder {
   async run () {
-    const users = await Database
-    .table('users')
-    .insert({
+
+    const data = {
+      uuid: uuid(),
       username: 'Administrator',
       email: 'admin@premiumfast.net',
-      password: await Hash.make('JyWhQkYuhYnCM2EB')
-    })
+      password: await str_random(16)
+    }
+
+    const query = new User()
+    query.uuid = data.uuid
+    query.username = data.username
+    query.email = data.email
+    query.password = data.password
+    query.save()
+
+    console.log(data)
+    process.exit()
+
   }
 }
 
